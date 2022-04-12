@@ -3,17 +3,22 @@ What does the following code return?*/
 
 new Set([1, 1, 2, 2, 3, 4]);
 
+//returns the set {1, 2, 3, 4}
+
 /*Quick Question #2
 What does the following code return?*/
 
 [...new Set("referee")].join("");
+//returns the string "ref"
 
 /*Quick Questions #3
 What does the Map m look like after running the following code?*/
 
 let m = new Map();
-m.set([1,2,3], true);
-m.set([1,2,3], false);
+m.set([1, 2, 3], true);
+m.set([1, 2, 3], false);
+//m has 2 key-value pairs:
+//  {Array(3) => true, Array(3) => false}
 
 /*hasDuplicate
 Write a function called hasDuplicate which accepts an array 
@@ -22,10 +27,28 @@ and returns true or false if that array contains a duplicate
 hasDuplicate([1,3,2,1]) // true
 hasDuplicate([1,5,-1,4]) // false*/
 
+function hasDuplicate(arr) {
+  return arr.length !== new Set(arr).size;
+}
+
 /*vowelCount
 Write a function called vowelCount which accepts a string and 
-returns a map where the keys are numbers and the values are 
+returns a map where the keys are vowels and the values are 
 the count of the vowels in the string.
 
 vowelCount('awesome') // Map { 'a' => 1, 'e' => 2, 'o' => 1 }
 vowelCount('Colt') // Map { 'o' => 1 }*/
+
+function vowelCount(inputStr) {
+  let vowels = [...inputStr].filter(letter => letter.match(/a|e|i|o|u/i));
+  let vowelMap = new Map();
+  for (v of vowels) {
+    if (!vowelMap.has(v)) {
+      vowelMap.set(v, 1);
+    }
+    else {
+      vowelMap.set(v, vowelMap.get(v)+1);
+    }
+  }
+  return vowelMap;
+}
