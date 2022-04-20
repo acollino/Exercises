@@ -5,7 +5,18 @@
     <link href="connect4.css" rel="stylesheet" />
   </head>
   <body>
-    <button id="play-button">PLAY</button>
+    <form>
+      <div>
+        <input type="color" value="#ff0000" name="p1-color" id="p1-color" />
+        <label for="p1-color">Player 1 Color</label>
+      </div>
+      <div>
+        <input type="color" value="#0000ff" name="p2-color" id="p2-color" />
+        <label for="p2-color">Player 2 Color</label>
+      </div>
+      <input type="submit" value="Submit Colors" id="color-submit" />
+    </form>
+    <button id="play-button">PLAY/RESET</button>
 
     <div id="game">
       <table id="board"></table>
