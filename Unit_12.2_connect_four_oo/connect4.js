@@ -9,8 +9,11 @@ class Game {
   constructor(width = 7, height = 6) {
     this.width = width;
     this.height = height;
-    this.currPlayer = 1;
     this.board = [];
+    this.player1 = new Player("red").setNumber(1);
+    this.player2 = new Player("blue").setNumber(2);
+    this.currPlayer = this.player1;
+    this.gameOver = false;
   }
 
   makeBoard() {
@@ -58,7 +61,7 @@ class Game {
   placeInTable(y, x) {
     const piece = document.createElement("div");
     piece.classList.add("piece");
-    piece.classList.add(`p${this.currPlayer}`);
+    piece.classList.add(`p${this.currPlayer.number}`);
     piece.style.top = -50 * (y + 2);
 
     const spot = document.getElementById(`${y}-${x}`);
@@ -66,13 +69,17 @@ class Game {
   }
 
   endGame(msg) {
+    this.gameOver = true;
     alert(msg);
   }
 
   handleClick(evt) {
+    if (this.gameOver) {
+      return;
+    }
     const x = +evt.target.id;
     const y = this.findSpotForCol(x);
-    if (y === null) {
+    if(y === null || isNaN(x)) {
       return;
     }
 
@@ -87,7 +94,7 @@ class Game {
       return this.endGame("Tie!");
     }
 
-    this.currPlayer = this.currPlayer === 1 ? 2 : 1;
+    this.currPlayer = this.currPlayer === this.player1 ? this.player2 : this.player1;
   }
 
   checkForWin() {
@@ -135,8 +142,40 @@ class Game {
       }
     }
   }
+
+  deletePieces() {
+    let pieceList = document.querySelectorAll(".piece");
+    pieceList.forEach((piece) => piece.remove());
+  }
+
+  startGame() {
+    if (document.getElementById("column-top")) {
+      return this.resetGame();
+    }
+    this.makeBoard();
+    this.makeHtmlBoard();
+  }
+
+  resetGame() {
+    this.currPlayer = 1;
+    this.board = [];
+    this.makeBoard();
+    this.deletePieces();
+    this.gameOver = false;
+  }
+}
+
+class Player{
+  constructor(color) {
+    this.color = color;
+  }
+
+  setNumber(num) {
+    this.number = num;
+    return this;
+  }
 }
 
 let game = new Game(7, 6);
-game.makeBoard();
-game.makeHtmlBoard();
+const resetButton = document.querySelector("#play-button");
+resetButton.addEventListener("click", game.startGame.bind(game));
