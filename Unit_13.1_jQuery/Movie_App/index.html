@@ -30,14 +30,27 @@
       />
       <input type="submit" id="submit" />
     </form>
+    <ul id="rating-list"></ul>
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
       crossorigin="anonymous"
     ></script>
     <script>
-      $("#submit").click(function(evt){
+      $("#submit").click(function (evt) {
         evt.preventDefault();
+        $("<li>")
+          .text(`${$("#title").val()}: ${$("#rating").val()}`)
+          .append(
+            $("<button>")
+              .text("Remove Listing")
+              .click(function (evt) {
+                $(this).parent().remove();
+              })
+          )
+          .appendTo($("#rating-list"));
+          $("#title").val("");
+          $("#rating").val("");
       });
     </script>
   </body>
