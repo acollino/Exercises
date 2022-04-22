@@ -5,32 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie App</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <!-- 
     Build an application that uses jQuery to do the following:
       -Contains a form with two inputs for a title and rating 
         along with a button to submit the form.
+
       -When the form is submitted, capture the values for each of the inputs 
         and append them to the DOM along with a button to remove each title 
         and rating from the DOM.
+
       -When the button to remove is clicked, remove each title and rating 
         from the DOM. -->
   <body>
-    <form>
-      <label for="title">Movie Title:</label>
-      <input type="text" placeholder="Movie" name="title" id="title" />
-      <label for="rating">Give Your Rating:</label>
-      <input
-        type="number"
-        placeholder="0"
-        name="rating"
-        id="rating"
-        min="0"
-        max="100"
-      />
-      <input type="submit" id="submit" />
+    <form class="centered">
+      <div>
+        <label for="title">Movie Title:</label>
+        <input
+          type="text"
+          placeholder="Movie"
+          name="title"
+          id="title"
+          required
+        />
+      </div>
+      <div>
+        <label for="rating">Give Your Rating:</label>
+        <input
+          type="number"
+          placeholder="0"
+          name="rating"
+          id="rating"
+          min="0"
+          max="100"
+          required
+        />
+      </div>
+      <div>
+        <input type="submit" id="submit" />
+      </div>
     </form>
-    <ul id="rating-list"></ul>
+    <h2 class="centered">Your Movie Ratings:</h2>
+    <div id="rating-list-container">
+      <ul id="rating-list"></ul>
+    </div>
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -39,18 +58,28 @@
     <script>
       $("#submit").click(function (evt) {
         evt.preventDefault();
+        if(!$("#title").get(0).reportValidity()){
+          return;
+        }
+        if(!$("#rating").get(0).reportValidity()){
+          return;
+        }
         $("<li>")
-          .text(`${$("#title").val()}: ${$("#rating").val()}`)
+          .addClass("movie-info")
           .append(
-            $("<button>")
-              .text("Remove Listing")
-              .click(function (evt) {
-                $(this).parent().remove();
-              })
+            $("<span>")
+              .text(`${$("#title").val()}\nRating: ${$("#rating").val()}`)
+              .append(
+                $("<button>")
+                  .text("Remove")
+                  .click(function (evt) {
+                    $(this).parent().parent().remove();
+                  })
+              )
           )
           .appendTo($("#rating-list"));
-          $("#title").val("");
-          $("#rating").val("");
+        $("#title").val("");
+        $("#rating").val("");
       });
     </script>
   </body>
