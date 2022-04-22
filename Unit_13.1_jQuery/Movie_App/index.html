@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie App</title>
+  </head>
+  <!-- 
+    Build an application that uses jQuery to do the following:
+      -Contains a form with two inputs for a title and rating 
+        along with a button to submit the form.
+      -When the form is submitted, capture the values for each of the inputs 
+        and append them to the DOM along with a button to remove each title 
+        and rating from the DOM.
+      -When the button to remove is clicked, remove each title and rating 
+        from the DOM. -->
+  <body>
+    <form>
+      <label for="title">Movie Title:</label>
+      <input type="text" placeholder="Movie" name="title" id="title" />
+      <label for="rating">Give Your Rating:</label>
+      <input
+        type="number"
+        placeholder="0"
+        name="rating"
+        id="rating"
+        min="0"
+        max="100"
+      />
+      <input type="submit" id="submit" />
+    </form>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $("#submit").click(function(evt){
+        evt.preventDefault();
+      });
+    </script>
+  </body>
+</html>
