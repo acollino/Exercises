@@ -23,3 +23,17 @@ def print_upper_words(word_list):
 
 print("Testing print_upper_words, expecting WHY HELLO THERE over 3 lines")
 print_upper_words(["WHY", "hElLo", "tHEre"])
+
+
+def print_e_words(word_list):
+    """
+    Given a list of strings, print each string that starts with 'e', 
+    regardless of case, on a separate line.
+    """
+    for word in word_list:
+        if word.startswith(("E", "e")):
+            print(word)
+
+
+print("Testing print_e_words, expecting 'Evil eggplant ELUDES eel' over 4 lines")
+print_e_words(["Evil", "eggplant", "parmesan", "ELUDES", "friendly", "eel"])
