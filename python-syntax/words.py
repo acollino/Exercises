@@ -28,12 +28,29 @@ print_upper_words(["WHY", "hElLo", "tHEre"])
 def print_e_words(word_list):
     """
     Given a list of strings, print each string that starts with 'e', 
-    regardless of case, on a separate line.
+    regardless of case, in uppercase on a separate line.
     """
     for word in word_list:
         if word.startswith(("E", "e")):
-            print(word)
+            print(word.upper())
 
 
-print("Testing print_e_words, expecting 'Evil eggplant ELUDES eel' over 4 lines")
-print_e_words(["Evil", "eggplant", "parmesan", "ELUDES", "friendly", "eel"])
+print("Testing print_e_words, expecting 'EVIL EGGPLANT ELUDES EEL' over 4 lines")
+print_e_words(["Evil", "eggplant", "Parmesan", "ELUDES", "friendly", "eel"])
+
+
+def print_matching_words(word_list, must_start_with):
+    """
+    Given a list of strings and a set of letters, print each string that starts 
+    with a letter in the set, regardless of case, in uppercase on a separate line.
+    """
+    for letter in must_start_with:
+        for word in word_list:
+            if word.startswith((letter.lower(), letter.upper())):
+                print(word.upper())
+
+
+print("Testing print_matching_words, expecting 'PARMESAN FRIENDLY' over 2 lines")
+print("Sets are unordered, so the order of printing cannot be guaranteed")
+print_matching_words(["Evil", "eggplant", "Parmesan",
+                     "ELUDES", "friendly", "eel"], {"p", "f", "a"})
