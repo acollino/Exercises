@@ -11,3 +11,16 @@ def mode(nums):
         >>> mode([2, 2, 3, 3, 2])
         2
     """
+    value_counter = {}
+    most_times = 0
+    mode = -1
+    for number in nums:
+        num_times = value_counter.get(number, -1)
+        if num_times == -1:
+            value_counter.update({number: 1})
+        else:
+            value_counter.update({number: num_times + 1})
+        if value_counter.get(number) > most_times:
+            most_times = value_counter.get(number)
+            mode = number
+    return mode

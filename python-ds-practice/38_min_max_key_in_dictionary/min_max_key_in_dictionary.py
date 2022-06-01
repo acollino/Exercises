@@ -9,3 +9,12 @@ def min_max_keys(d):
         >>> min_max_keys({"apple": "red", "cherry": "red", "berry": "blue"})
         ('apple', 'cherry')
     """
+    keys = list(d.keys())
+    min_key = keys[0]
+    max_key = keys[0]
+    for key in keys:
+        if key < min_key:
+            min_key = key
+        if key > max_key:
+            max_key = key
+    return (min_key, max_key)

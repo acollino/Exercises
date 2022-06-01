@@ -21,3 +21,12 @@ def sum_pairs(nums, goal):
         >>> sum_pairs([11, 20, 4, 2, 1, 5], 100)
         ()
     """
+    best_pair = [(), len(nums)]
+    for index_start in range(len(nums)):
+        num_A = nums[index_start]
+        for index_end in range(index_start + 1, len(nums)):
+            num_B = nums[index_end]
+            if num_A + num_B == goal:
+                if index_end < best_pair[1]:
+                    best_pair = [(num_A, num_B), index_end]
+    return best_pair[0]
