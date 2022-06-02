@@ -15,12 +15,15 @@ def two_list_dictionary(keys, values):
         >>> two_list_dictionary(['a', 'b', 'c'], [1, 2, 3, 4])
         {'a': 1, 'b': 2, 'c': 3}
     """
-    ans_dict = {}
-    index = 0
-    for key in keys:
-        if(index < len(values)):
-            ans_dict.update({key: values[index]})
-        else:
-            ans_dict.update({key: None})
-        index += 1
-    return ans_dict
+    # original attempt
+    # ans_dict = {}
+    # index = 0
+    # for key in keys:
+    #     if(index < len(values)):
+    #         ans_dict.update({key: values[index]})
+    #     else:
+    #         ans_dict.update({key: None})
+    #     index += 1
+    # return ans_dict
+    extend_val = values + [None] * (len(keys) - len(values))
+    return {keys[i]: extend_val[i] for i in range(len(keys))}

@@ -11,10 +11,13 @@ def remove_every_other(lst):
         >>> lst
         [1, 2, 3, 4, 5]
     """
-    list_to_return = []
-    add_toggle = True
-    for element in lst:
-        if add_toggle:
-            list_to_return.append(element)
-        add_toggle = not add_toggle
-    return list_to_return
+    # original attempt
+    # list_to_return = []
+    # add_toggle = True
+    # for element in lst:
+    #     if add_toggle:
+    #         list_to_return.append(element)
+    #     add_toggle = not add_toggle
+    # return list_to_return
+
+    return lst[::2]

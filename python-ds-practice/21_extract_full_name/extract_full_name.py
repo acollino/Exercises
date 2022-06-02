@@ -14,4 +14,6 @@ def extract_full_names(people):
         >>> extract_full_names(names)
         ['Ada Lovelace', 'Grace Hopper']
     """
-    return [person.get("first") + " " + person.get("last") for person in people]
+    # return [person.get("first") + " " + person.get("last") for person in people]
+
+    return list(map(lambda x: f"{x.get('first')} {x.get('last')}", people))

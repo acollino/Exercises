@@ -27,10 +27,13 @@ def is_odd_string(word):
         >>> is_odd_string('amazing')
         True
     """
-    sum = 0
-    for letter in word:
-        # to get "a" to equal 1, rather than 97
-        value = ord(letter.lower()) - 96
-        sum += value
-    return sum % 2 == 0
+    # original attempt
+    # sum = 0
+    # for letter in word:
+    #     value = ord(letter.lower()) - 96
+    #     sum += value
+    # return sum % 2 == 1
+
+    return sum([ord(char.lower()) for char in word]) % 2 == 1
+
     # Hint: you may find the ord() function useful here

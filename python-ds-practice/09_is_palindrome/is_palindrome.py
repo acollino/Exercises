@@ -21,13 +21,16 @@ def is_palindrome(phrase):
         >>> is_palindrome('Noon')
         True
     """
-    working_string = phrase.lower().replace(" ", "")
-    counter = len(working_string) - 1
-    for letter in working_string:
-        if letter != working_string[counter]:
-            return False
-        if counter <= (len(working_string) - 1)/2:
-            return True
-        counter -= 1
-    return None
-    
+    # First attempt:
+    # working_string = phrase.lower().replace(" ", "")
+    # counter = len(working_string) - 1
+    # for letter in working_string:
+    #     if letter != working_string[counter]:
+    #         return False
+    #     if counter <= (len(working_string) - 1)/2:
+    #         return True
+    #     counter -= 1
+    # return None
+
+    simplified_string = phrase.lower().replace(" ", "")
+    return simplified_string == simplified_string[::-1]

@@ -13,4 +13,6 @@ def intersection(l1, l2):
         >>> intersection([1, 2, 3], [4, 5, 6])
         []
     """
-    return [element for element in l1 if l2.count(element) > 0]
+    # original answer without using sets:
+    # return [element for element in l1 if l2.count(element) > 0]
+    return list(set(l1) & set(l2))

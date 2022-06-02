@@ -1,3 +1,6 @@
+import math
+
+
 def multiply_even_numbers(nums):
     """Multiply the even numbers.
 
@@ -12,8 +15,10 @@ def multiply_even_numbers(nums):
         >>> multiply_even_numbers([1, 3, 5])
         1
     """
-    product = 1
-    for number in nums:
-        if number % 2 == 0:
-            product *= number
-    return product
+    # original answer, without importing:
+    # for number in nums:
+    #     if number % 2 == 0:
+    #         product *= number
+
+    #in JS, could use reduce() here, but it was removed in Python3
+    return math.prod(filter(lambda x: x % 2 == 0, nums))

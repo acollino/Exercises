@@ -27,7 +27,7 @@ def calculate(operation, a, b, make_int=False, message='The result is'):
 
     """
     operations = ["add", "subtract", "multiply", "divide"]
-    if(operations.count(operation) == 0 or not isinstance(a, (int, float)) or not isinstance(b, (int, float))):
+    if operation not in operations or not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
         return None
     else:
         solution = 0
@@ -41,4 +41,4 @@ def calculate(operation, a, b, make_int=False, message='The result is'):
             solution = a / b
         if make_int:
             solution = int(solution)
-        return message + " " + str(solution)
+        return f"{message} {solution}"

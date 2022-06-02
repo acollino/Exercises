@@ -13,14 +13,15 @@ def two_oldest_ages(ages):
         >>> two_oldest_ages([1, 5, 5, 2])
         (2, 5)
     """
-    oldest_ages = [0, 0]
-    for age in ages:
-        if age > oldest_ages[1]:
-            oldest_ages[0] = oldest_ages[1]
-            oldest_ages[1] = age
-        elif age < oldest_ages[1] and age > oldest_ages[0]:
-            oldest_ages[0] = age
-    return tuple(oldest_ages)
+    # original attempt
+    # oldest_ages = [0, 0]
+    # for age in ages:
+    #     if age > oldest_ages[1]:
+    #         oldest_ages[0] = oldest_ages[1]
+    #         oldest_ages[1] = age
+    #     elif age < oldest_ages[1] and age > oldest_ages[0]:
+    #         oldest_ages[0] = age
+    # return tuple(oldest_ages)
     
     # NOTE: don't worry about an optimized runtime here; it's fine if
     # you have a runtime worse than O(n)
@@ -29,3 +30,7 @@ def two_oldest_ages(ages):
     # you may find it helpful to research the `sorted(iter)` function, which
     # can take *any* type of list-like-thing, and returns a new, sorted list
     # from it.
+
+    oldest = max(ages)
+    second_old = max(filter(lambda x: x!=oldest, ages))
+    return (second_old, oldest)

@@ -16,7 +16,10 @@ def friend_date(a, b):
         >>> friend_date(sauron, gandalf)
         True
     """
-    has_common = False
-    for hobby in a[2]:
-        has_common = has_common or b[2].count(hobby) > 0
-    return has_common
+    # orignal attempt:
+    # has_common = False
+    # for hobby in a[2]:
+    #     has_common = has_common or b[2].count(hobby) > 0
+    # return has_common
+
+    return len(set(a[2]) & set(b[2])) > 0

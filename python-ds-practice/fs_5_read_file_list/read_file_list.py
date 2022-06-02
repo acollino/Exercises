@@ -1,3 +1,4 @@
+import os
 def read_file_list(filename):
     """Read file and print out each line separately with a "-" before it.
 
@@ -15,6 +16,10 @@ def read_file_list(filename):
 
     It will raise an error if the file cannot be found.
     """
+    with open(f"{os.path.dirname(__file__)}/{filename}") as reading_file:
+        for line in reading_file:
+            print(f'- {line.rstrip()}')
+
 
     # hint: when you read lines of files, there will be a "newline"
     # (end-of-line character) at the end of each line, and you want to
