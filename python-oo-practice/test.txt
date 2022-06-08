@@ -1,0 +1,18 @@
+#ignore me
+# IgnoRE THis ToO
+
+
+
+print
+these
+#not tHis
+lines
+
+
+and
+keep
+#not this one
+count
+
+
+end

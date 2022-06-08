@@ -10,16 +10,15 @@ class WordFinder:
     def __init__(self, filepath):
         """Create an instance of WordFinder from a filepath str"""
         self.filepath = filepath
-        self.word_list = WordFinder.generate_word_list(filepath)
+        self.word_list = self.generate_word_list()
         print(f"{len(self.word_list)} words read")
 
-    @classmethod
-    def generate_word_list(cls, filepath):
+    def generate_word_list(self):
         """
         generate a list of strings from a filepath, one string per
         line in the file
         """
-        with open(filepath) as word_file:
+        with open(self.filepath) as word_file:
             words = [line.strip() for line in word_file]
             return words
         
