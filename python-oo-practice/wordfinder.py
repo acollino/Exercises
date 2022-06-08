@@ -5,6 +5,18 @@ class WordFinder:
     """
     Class that creates a list of words from a file and can return random
     words from that list
+
+    >>> wf = WordFinder("test.txt")
+    10 words read
+
+    >>> wf.random() in ['print', 'these', 'words', '#ignore', '#not', '']
+    True
+
+    >>> wf.random() in ['print', 'these', 'words', '#ignore', '#not', '']
+    True
+
+    >>> wf.random() in ['print', 'these', 'words', '#ignore', '#not', '']
+    True
     """
 
     def __init__(self, filepath):

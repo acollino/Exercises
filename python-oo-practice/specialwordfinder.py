@@ -10,6 +10,18 @@ class SpecialWordFinder(WordFinder):
     Class that creates a list of words from a file while ignoring empty lines
     or lines that are commented with '#' and can return random words from 
     that list.
+
+    >>> swf = SpecialWordFinder("test.txt")
+    3 words read
+
+    >>> swf.random() in ['print', 'these', 'words']
+    True
+
+    >>> swf.random() in ['print', 'these', 'words']
+    True
+
+    >>> swf.random() in ['print', 'these', 'words']
+    True
     """
 
     def __init__(self, filepath):

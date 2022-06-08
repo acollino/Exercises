@@ -1,18 +1,10 @@
-#ignore me
-# IgnoRE THis ToO
+#ignore
+#ignore
 
 
 
 print
 these
-#not tHis
-lines
+words
 
-
-and
-keep
-#not this one
-count
-
-
-end
+#not
