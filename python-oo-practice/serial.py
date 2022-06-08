@@ -35,3 +35,6 @@ class SerialGenerator:
     def reset(self):
         """Reset the SerialGenerator to its starting value"""
         self.increment = self.start - 1
+
+    def __repr__(self) :
+        return f"<{self.__class__.__name__} start={self.start} next value={self.increment+1}>"
