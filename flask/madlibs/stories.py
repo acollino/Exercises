@@ -1,5 +1,5 @@
 """Madlibs Stories."""
-
+from random import randint
 
 class Story:
     """Madlibs story.
@@ -32,6 +32,19 @@ class Story:
         for (key, val) in answers.items():
             text = text.replace("{" + key + "}", val)
 
+        return text
+
+    def generate_multi(self, answers):
+        """Substitute MultiDict answers into text."""
+
+        text = self.template
+
+        for (key, values) in answers.lists():
+            temp_values = values
+            target = "{" + key + "}"
+            while target in text:
+                remove_index = randint(0, len(temp_values) - 1)
+                text = text.replace("{" + key + "}", temp_values.pop(remove_index))
         return text
 
 
