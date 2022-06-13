@@ -11,15 +11,14 @@
 <body>
   {% block content %}
   <h1>Madlibs</h1>
-  {% for story in stories %}
-  <a href="/prompts/{{story.icon}}">
-    <div class="story-container">
-      <h3>{{story.title}}</h3>
-      <h4>by {{story.author}}</h4>
-      <div>{{story.icon}}</div>
-    </div>
-  </a>
-  {% endfor %}
+  <form action="/story/{{story.icon}}">
+    <ul>
+      {% for prompt in story.prompts %}
+      <li>{{prompt.replace("_", " ").capitalize()}} <input type="text" name={{prompt}} required></li>
+      {% endfor %}
+    </ul>
+    <button>Submit</button>
+  </form>
   {% endblock %}
 </body>
 
