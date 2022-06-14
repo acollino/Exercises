@@ -1,25 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'index.html' %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}Madlibs{% endblock %}</title>
-</head>
+{% block title %}Madlibs{% endblock %}
 
-<body>
-  {% block content %}
-  <h1>Madlibs</h1>
-  <form action="/story/{{story.icon}}">
-    <ul>
+{% block content %}
+<div>
+  <div class="title">
+    <h1>Glad-libs</h1>
+    <h2>Fill in the blanks to write your own stories!</h2>
+  </div>
+  <form action="/story/{{story.icon}}" class="prompt-container large-font">
+    <ul class="prompts">
       {% for prompt in story.prompts %}
       <li>{{prompt.replace("_", " ").capitalize()}} <input type="text" name={{prompt}} required></li>
       {% endfor %}
     </ul>
-    <button>Submit</button>
+    <div class="form-buttons">
+      <button class="form-button">Submit</button>
+      <a href="/" class="form-button">Home</a>
+    </div>
   </form>
-  {% endblock %}
-</body>
-
-</html>
+</div>
+{% endblock %}

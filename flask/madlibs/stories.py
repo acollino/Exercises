@@ -17,7 +17,7 @@ class Story:
         'I love to eat a good mango.'
     """
 
-    def __init__(self, words, text, author="", title="", icon="default"):
+    def __init__(self, words, text, author="", title="", icon="story"):
         """Create story with words and template text."""
 
         self.prompts = words
