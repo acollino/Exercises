@@ -26,7 +26,7 @@ function drawCard() {
         }
       })
       .catch((error) => {
-        cardHolder.textContent = "Something went wrong while drawing a card.";
+        console.log("Something went wrong while drawing a card.");
         console.error(error);
       });
   }
