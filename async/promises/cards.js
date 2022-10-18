@@ -20,21 +20,28 @@ function drawCard() {
       .then((respJSON) => {
         displayCard(respJSON.cards[0]);
         deck.remaining = respJSON.remaining;
+        if (deck.remaining === 0) {
+          drawButton.textContent = "No Cards Left!";
+          drawButton.setAttribute("disabled", true);
+        }
       })
       .catch((error) => {
         cardHolder.textContent = "Something went wrong while drawing a card.";
         console.error(error);
       });
   }
-  if (deck.remaining === 0) {
-    cardHolder.textContent = "No Cards Left!";
-    cardHolder.setAttribute("enabled", false);
-  }
 }
 
+// Random angle is between -45 and 45deg
+// Random X,Y are between -2 and ~2
 function displayCard(cardObj) {
   let cardElement = document.createElement("img");
   cardElement.setAttribute("src", cardObj.image);
+  cardElement.classList.add("card");
+  let randomAngle = Math.floor(Math.random() * 91 - 45);
+  let randomY = Math.random() * 4 - 2;
+  let randomX = Math.random() * 4 - 2;
+  cardElement.style.transform = `rotate(${randomAngle}deg) translateX(${randomX}rem) translateY(${randomY}rem)`;
   cardHolder.append(cardElement);
 }
 

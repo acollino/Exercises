@@ -1,0 +1,43 @@
+body {
+  background-color: #3a7c24;
+}
+
+#draw-btn {
+  display: block;
+  margin: 4rem auto;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  box-shadow: 0.1rem 0.1rem black;
+  transition: all 0.1s;
+}
+
+#draw-btn:hover:enabled {
+  background-color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0.2rem 0.2rem black;
+}
+
+#draw-btn:active:enabled {
+  background-color: #999999;
+  transform: translateY(1px);
+  box-shadow: 0.05rem 0.05rem black;
+}
+
+#draw-btn:disabled {
+  background-color: #999999;
+  box-shadow: none;
+  color: #4f4f4f;
+}
+
+.card {
+  position: absolute;
+}
+
+#card-holder {
+  position: relative;
+  width: 14.5rem;
+  margin: 30vh auto 0 auto;
+}
