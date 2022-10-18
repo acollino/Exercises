@@ -39,7 +39,7 @@ function makeFactRequest(url, targetList, errorMsg) {
       addFactsToList(targetList, respJson);
     })
     .catch((error) => {
-      singleFact.textContent = errorMsg;
+      targetList.textContent = errorMsg;
       console.error(error);
     });
 }
